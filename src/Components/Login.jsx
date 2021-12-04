@@ -14,7 +14,7 @@ function Login(props) {
   const navigate = useNavigate();
   function establishConnection() {
     props["setIsLogged"](true);
-    navigate("/message");
+    navigate("/P2PChat/message");
   }
   
   return (

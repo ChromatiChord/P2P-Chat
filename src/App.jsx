@@ -13,9 +13,9 @@ const App = () => {
   return (
     <Router>      
         <Routes>
-          <Route exact path="/" element={<Login {...{ownID, setownID, partnerID, setPartnerID, setIsLogged}}/>}/>
-          <Route path="/message" element={!isLogged ? <Navigate replace to={"/"}/> : <Messages {...{ownID, partnerID}}/>}/>
-          <Route path="*" element={<Navigate replace to={!isLogged ? "/" : "/message"}/>}/>
+          <Route exact path="/P2PChat" element={<Login {...{ownID, setownID, partnerID, setPartnerID, setIsLogged}}/>}/>
+          <Route path="/P2PChat/message" element={!isLogged ? <Navigate replace to={"/P2PChat"}/> : <Messages {...{ownID, partnerID}}/>}/>
+          <Route path="*" element={<Navigate replace to={!isLogged ? "/P2PChat" : "/P2PChat/message"}/>}/>
         </Routes>
     </Router>
   )
