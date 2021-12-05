@@ -6,8 +6,8 @@ import Messages from './Components/Messages';
 import Login from './Components/Login';
 
 const App = () => {
-  const [ownID, setownID] = useState("Partner ID");
-  const [partnerID, setPartnerID] = useState("Own ID");
+  const [ownID, setownID] = useState("____");
+  const [partnerID, setPartnerID] = useState("____");
   const [isLogged, setIsLogged] = useState(false);
 
   return (

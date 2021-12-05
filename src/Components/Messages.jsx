@@ -1,16 +1,27 @@
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, Box, Typography, Grid } from '@mui/material'
 import { usePeerState, useReceivePeerState } from 'react-peer';
 import { useState, useEffect, useCallback } from 'react';
 import { sha224 } from 'js-sha256';
 import { useFirstRender } from './FirstRenderCheck';
+import MessageBox from './MessageBox';
+
+function getDateTime() {
+  let today = new Date(),
+  date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate(),
+  time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  return date+' '+time;
+}
 
 function Messages(props) {
+
+  const font = {fontFamily: "Roboto"}
+  const id = [...props["ownID"]].join("");
 
   const ownID = sha224(props["ownID"]+props["partnerID"]);
   const peerID = sha224(props["partnerID"]+props["ownID"]);
   const [messageList, setMessageList] = useState([]);
 
-  const [message, setMessage] = useState("Message");
+  const [message, setMessage] = useState("____");
   function updateMessage(e) {
     setMessage(e.target.value);
   }
@@ -20,13 +31,14 @@ function Messages(props) {
   }, {brokerId: ownID});
   
   function sendMessage() {
-    const new_message = {
-      "senderID": props["ownID"],
-      "message": message
+    if (message !== "____") {
+      const new_message = {
+        "senderID": props["ownID"],
+        "message": message
+      }
+      setSendState(new_message);
+      setMessageList(messageList.concat([new_message]));
     }
-    setSendState(new_message);
-    setMessageList(messageList.concat([new_message]));
-
   }
 
   const [receiveState, isConnected, peerError] = useReceivePeerState(peerID);
@@ -35,8 +47,6 @@ function Messages(props) {
   useEffect(() => {
     if (!firstRender) {
       if (receiveState["senderID"] !== "setup") {
-        console.log("Recieved Message:");
-        console.log(receiveState);
         setMessageList(messageList.concat([{
           "senderID": receiveState["senderID"],
           "message": receiveState["message"]
@@ -46,22 +56,52 @@ function Messages(props) {
   }, [receiveState])
 
   return (
-    <>          
-      Talking to: {props["partnerID"]}
-      <br/>
-      As: {props["ownID"]}
-      <br/><br/>
-      Message:
-      <TextField onChange={updateMessage}/>
-      <br/><br/>
-      <Button onClick={() => sendMessage()}>Send Message</Button>
-      {/* {JSON.stringify(messageList)} */}
-      {messageList.map(messageItem => 
-        <div>
-          {messageItem["senderID"]}: {messageItem["message"]}
-        </div>
-      )}
-    </>
+    <Box sx={{ 
+      display: 'flex',
+      margin: "50px",
+      justifyContent: 'space-evenly'
+    }}>
+      <Box sx={{
+        border: "1px solid grey",
+        width: "20vw",
+        height: "75vh",
+        borderRadius: "15px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}>
+        <center>
+          <Typography
+            sx={font}
+            >Connected To: <br/>
+            {props["partnerID"]}
+          </Typography>
+          <TextField
+            id="outlined-helperText"
+            label="Message"
+            onChange={updateMessage}
+          />
+          <br/><br/>
+          <Button variant="outlined" onClick={() => sendMessage()}>Send Message</Button>
+        </center>
+      </Box>  
+      <Box sx={{
+        border: "1px solid grey",
+        width: "50vw",
+        height: "75vh",
+        borderRadius: "15px",
+        overflowY: "auto",
+        display: "flex",
+        justifyContent: "flex-end",
+        flexDirection: "column",
+      }}>
+        {messageList.map(messageItem => 
+          <div key={getDateTime() + messageItem["message"]}>
+            <MessageBox {...{messageItem, id}}/>
+          </div>
+        )}
+      </Box>        
+    </Box>
   )
 }
 
