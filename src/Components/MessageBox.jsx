@@ -9,7 +9,7 @@ function MessageBox(props) {
     <Box sx={{
       margin: "10px",
       fontFamily: "Roboto",
-      float: isOrigin ? "" : "right"
+      float: isOrigin ? "" : "right",
     }}>
       <div 
       style={{

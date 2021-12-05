@@ -55,6 +55,18 @@ function Messages(props) {
     }
   }, [receiveState])
 
+  useEffect(() => {
+    if (!firstRender) {
+      console.log(connections);
+    }
+  }, [connections])
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+
   return (
     <Box sx={{ 
       display: 'flex',
@@ -80,6 +92,7 @@ function Messages(props) {
             id="outlined-helperText"
             label="Message"
             onChange={updateMessage}
+            onKeyDown={handleKeyDown}
           />
           <br/><br/>
           <Button variant="outlined" onClick={() => sendMessage()}>Send Message</Button>
@@ -90,7 +103,8 @@ function Messages(props) {
         width: "50vw",
         height: "75vh",
         borderRadius: "15px",
-        overflowY: "auto",
+        overflow: "auto",
+        minHeight: "0px",
         display: "flex",
         justifyContent: "flex-end",
         flexDirection: "column",
