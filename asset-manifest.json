@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/P2PChat/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/P2PChat/static/js/main.c2496603.chunk.js",
-    "main.js.map": "/P2PChat/static/js/main.c2496603.chunk.js.map",
-    "runtime-main.js": "/P2PChat/static/js/runtime-main.ef8b25c9.js",
-    "runtime-main.js.map": "/P2PChat/static/js/runtime-main.ef8b25c9.js.map",
-    "static/js/2.de0f8e4e.chunk.js": "/P2PChat/static/js/2.de0f8e4e.chunk.js",
-    "static/js/2.de0f8e4e.chunk.js.map": "/P2PChat/static/js/2.de0f8e4e.chunk.js.map",
-    "static/js/3.6ef5032e.chunk.js": "/P2PChat/static/js/3.6ef5032e.chunk.js",
-    "static/js/3.6ef5032e.chunk.js.map": "/P2PChat/static/js/3.6ef5032e.chunk.js.map",
+    "main.js": "/P2PChat/static/js/main.8f805a1a.chunk.js",
+    "main.js.map": "/P2PChat/static/js/main.8f805a1a.chunk.js.map",
+    "runtime-main.js": "/P2PChat/static/js/runtime-main.168b0c60.js",
+    "runtime-main.js.map": "/P2PChat/static/js/runtime-main.168b0c60.js.map",
+    "static/js/2.307e5e20.chunk.js": "/P2PChat/static/js/2.307e5e20.chunk.js",
+    "static/js/2.307e5e20.chunk.js.map": "/P2PChat/static/js/2.307e5e20.chunk.js.map",
+    "static/js/3.ece6834f.chunk.js": "/P2PChat/static/js/3.ece6834f.chunk.js",
+    "static/js/3.ece6834f.chunk.js.map": "/P2PChat/static/js/3.ece6834f.chunk.js.map",
     "index.html": "/P2PChat/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/P2PChat/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.de0f8e4e.chunk.js.LICENSE.txt": "/P2PChat/static/js/2.de0f8e4e.chunk.js.LICENSE.txt"
+    "static/js/2.307e5e20.chunk.js.LICENSE.txt": "/P2PChat/static/js/2.307e5e20.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ef8b25c9.js",
-    "static/js/2.de0f8e4e.chunk.js",
+    "static/js/runtime-main.168b0c60.js",
+    "static/js/2.307e5e20.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.c2496603.chunk.js"
+    "static/js/main.8f805a1a.chunk.js"
   ]
 }
